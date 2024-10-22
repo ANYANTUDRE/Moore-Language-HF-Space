@@ -85,7 +85,7 @@ goai_tts = gr.Interface(
     fn=goai_tts2.goai_ttt_tts,
     inputs=[
         gr.Text(label="Texte à traduire", lines=2, value="Par cette ouverture, le centre se veut contribuer à la formation professionnelle des jeunes et des femmes, renforcer les capacités des acteurs du monde agricole, et contribuer à la lutte contre le chômage au Burkina Faso."),
-        gr.Dropdown(label="Voix", choices=audio_files, value="exple_voix_masculine.wav"),
+        gr.Dropdown(label="Voix", choices=AUDIO_FILES , value="exple_voix_masculine.wav"),
         gr.Audio(label="Cloner votre voix (optionel)", type="numpy", format="wav"),
     ],
     outputs=[
