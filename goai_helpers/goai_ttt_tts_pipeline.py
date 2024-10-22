@@ -61,7 +61,7 @@ def goai_ttt_tts(
     
     # 2. TTS: Text to Speech
     sample_rate, audio_data = goai_many_tts(
-        text,
+        mos_text,
         tts_model,
         reference_speaker,
         reference_audio=reference_audio,

@@ -81,7 +81,7 @@ goai_ttt_tts_pipeline_if = gr.Interface(
     fn=goai_ttt_tts_pipeline.goai_ttt_tts,
     inputs=[
         gr.Text(
-            label="Texte à traduire", 
+            label="Texte à traduire (en Francais)", 
             lines=3, 
             value="Par cette ouverture, le centre se veut contribuer à la formation professionnelle des jeunes et des femmes, renforcer les capacités des acteurs du monde agricole, et contribuer à la lutte contre le chômage au Burkina Faso."
         ),
@@ -96,13 +96,13 @@ goai_ttt_tts_pipeline_if = gr.Interface(
             value="exple_voix_masculine.wav"
         ),
         gr.Audio(
-            label="Cloner votre voix (optionel)", 
+            label="Cloner votre voix (optionel et uniquement pour le 1er modèle proposé)", 
             type="numpy", 
             format="wav"
         ),
     ],
     outputs=[
-        gr.Text(label="Texte traduit"),
+        gr.Text(label="Texte traduit (en Mooré)"),
         gr.Audio(label="Audio généré", format="wav"),
     ],
     examples=[["Ils vont bien, merci. Mon père travaille dur dans les champs et ma mère est toujours occupée à la maison.", "exple_voix_masculine.wav", "ArissBandoss/coqui-tts-moore-V1"], 
@@ -119,7 +119,11 @@ goai_ttt_tts_pipeline_if = gr.Interface(
 goai_stt_ttt_pipeline_if = gr.Interface(
     fn=goai_stt_ttt_pipeline.goai_stt_ttt,
     inputs=[
-        gr.Audio(sources=["microphone", "upload"], type="filepath"),
+        gr.Audio(
+            sources=["microphone", "upload"], 
+            type="filepath",
+            label="Audio Mooré",
+        ),
         gr.Dropdown(
             label="Modèles d'ASR", 
             choices=MODELES_ASR, 
@@ -128,7 +132,7 @@ goai_stt_ttt_pipeline_if = gr.Interface(
         gr.Dropdown(
             choices=LANGUAGES, 
             value="Automatic Detection",  # + sorted(get_language_names())
-            label="Language", 
+            label="Langue (Mooré)", 
             interactive = True,
         ), 
         gr.Slider(label="Batch Size", minimum=1, maximum=32, value=8, step=1),
@@ -136,8 +140,8 @@ goai_stt_ttt_pipeline_if = gr.Interface(
         gr.Slider(label="Stride Length (s)", minimum=1, maximum=30, value=1, step=0.1),
     ],
     outputs=[
-        gr.Textbox(label="Texte Mooré"), 
-        gr.Textbox(label="Texte Francais"), 
+        gr.Textbox(label="Texte transcrit (en Mooré)"), 
+        gr.Textbox(label="Texte traduit (Francais)"), 
     ],
     examples=[["./audios/example1.mp3", "ArissBandoss/whisper-small-mos"], 
               ["./audios/example2.mp3", "ArissBandoss/whisper-small-mos"],
