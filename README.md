@@ -23,7 +23,7 @@ short_description: Demo Space for Mooré language TTS, ASR and translation
 ![hf-space-demo](img/demo-moore-2.png)  
 ![hf-space-demo](img/demo-moore-3.png)    
 
-[Try Demo Here]([https://anyantudre-resemble-enhance-demo.hf.space](https://huggingface.co/spaces/ArissBandoss/Moore-Language-Space-ZeroGPU))  
+[**Try Demo Here**](https://huggingface.co/spaces/ArissBandoss/Moore-Language-Space-ZeroGPU) 
 
 
 ## Have questions about this project or want to collaborate?
