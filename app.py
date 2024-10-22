@@ -53,7 +53,7 @@ LANG_TO_ID = {
 demo = gr.Blocks(theme=gr.themes.Ocean())
 
 goai_stt = gr.Interface(
-    fn=goai_stt2.goai_stt2,
+    fn=goai_stt2.transcribe,
     inputs=[
         gr.Audio(sources=["microphone", "upload"], type="filepath"),
         gr.Dropdown(
