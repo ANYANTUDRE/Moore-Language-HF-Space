@@ -66,7 +66,7 @@ goai_traduction_if = gr.Interface(
         gr.Dropdown(label="Langue source", choices=["fra_Latn", "mos_Latn"], value='fra_Latn'),
         gr.Dropdown(label="Langue cible", choices=["fra_Latn", "mos_Latn"], value='mos_Latn')
     ],
-    outputs=["Texte traduit"],
+    outputs=gr.Text(label="Texte traduit"),
     examples=[["Yʋʋm a wãn la b kẽesd biig lekolle?", "mos_Latn", "fra_Latn"],
               ["Zak-soab la kasma.", "mos_Latn", "fra_Latn"],
               ["Le gouvernement avait pris des mesures louables par rapport à l’augmentation des prix de certaines denrées alimentaires.", "fra_Latn", "mos_Latn"],
