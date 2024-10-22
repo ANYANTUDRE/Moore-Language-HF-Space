@@ -21,7 +21,7 @@ def goai_many_tts(
         reference_audio=None,
     ):
 
-    if tts_model == "ArissBandoss/coqui-tts-moore-V1":
+    if "coqui" in tts_model:
         # TTS pipeline
         tts = MooreTTS(tts_model)
         reference_speaker = os.path.join("./exples_voix", reference_speaker)
@@ -34,7 +34,7 @@ def goai_many_tts(
 
         return sampling_rate, audio_array.numpy()
     
-    elif tts_model == "ArissBandoss/mms-tts-mos-male-17-V5":
+    elif "mms" in tts_model:
         sample_rate, audio_data = goai_tts(text)
         return sample_rate, audio_data
 
