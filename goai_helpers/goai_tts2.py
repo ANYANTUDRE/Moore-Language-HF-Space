@@ -19,7 +19,7 @@ from TTS.tts.models.xtts import Xtts
 from resemble_enhance.enhancer.inference import denoise, enhance
 from flore200_codes import flores_codes
 from goai_helpers.utils import download_file, diviser_phrases_moore, enhance_speech
-import goai_traduction
+from goai_helpers.goai_traduction import goai_traduction
 
 # authentification
 auth_token = os.getenv('HF_SPACE_TOKEN')
