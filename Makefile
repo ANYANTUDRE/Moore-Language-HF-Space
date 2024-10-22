@@ -5,9 +5,6 @@ install:
 test:
 	python app.py
 
-debug:
-	#python -m pytest -vv --pdb	#Debugger is invoked
-
 format:
 	#black *.py
 

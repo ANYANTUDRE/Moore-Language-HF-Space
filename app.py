@@ -26,7 +26,7 @@ DESCRIPTION = """<div style="display: flex; justify-content: space-between; alig
                 """
 
 
-demo = gr.Blocks(theme=gr.themes.Ocean())
+demo = gr.Blocks(theme=gr.themes.Soft())
 
 goai_traduction_if = gr.Interface(
     fn=goai_traduction.goai_traduction,
@@ -115,7 +115,7 @@ goai_ttt_tts_pipeline_if = gr.Interface(
 
 
 goai_stt_ttt_pipeline_if = gr.Interface(
-    fn=goai_stt_ttt_pipeline.goai_stt_ttt_pipeline,
+    fn=goai_stt_ttt_pipeline.goai_stt_ttt,
     inputs=[
         gr.Audio(sources=["microphone", "upload"], type="filepath"),
         gr.Slider(label="Batch Size", minimum=1, maximum=32, value=8, step=1),
