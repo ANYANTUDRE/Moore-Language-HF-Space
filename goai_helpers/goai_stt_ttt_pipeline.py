@@ -29,7 +29,7 @@ def goai_stt_ttt(
         batch_size, 
         chunk_length_s, 
         stride_length_s
-    )
+    )[0]
     yield mos_text, None
 
     # 2. TTT: Translation mos ==> fr    
