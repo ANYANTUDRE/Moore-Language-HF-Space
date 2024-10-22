@@ -5,12 +5,7 @@ from transformers import set_seed, Wav2Vec2ForCTC, AutoProcessor
 import numpy as np
 import spaces
 import os
-from huggingface_hub import login
 
-#auth_token = os.environ["HF_SPACE_TOKEN"]
-#print(f" Auth token ====>> {auth_token}")
-auth_token = os.getenv('HF_SPACE_TOKEN')
-login(token=auth_token)
 
 @spaces.GPU
 def goai_stt(fichier):
