@@ -1,4 +1,6 @@
 pip==24.2
+transformers>=4.33.0
+spaces~=0.26.1
 torch>=2.1
 torchaudio
 gradio~=4.8.0
