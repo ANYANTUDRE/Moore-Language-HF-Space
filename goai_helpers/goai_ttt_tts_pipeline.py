@@ -53,7 +53,7 @@ def goai_ttt_tts(
     ):
 
     # 1. TTT: Translation fr ==> mos    
-    mos_text = goai_traduction.goai_traduction(
+    mos_text = goai_traduction(
         text, 
         src_lang="fra_Latn", 
         tgt_lang="mos_Latn"

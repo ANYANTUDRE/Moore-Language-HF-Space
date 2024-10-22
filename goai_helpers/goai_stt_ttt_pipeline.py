@@ -36,7 +36,7 @@ def goai_stt_ttt(
     yield mos_text, None
 
     # 2. TTT: Translation mos ==> fr    
-    fr_text = goai_traduction.goai_traduction(
+    fr_text = goai_traduction(
         mos_text, 
         src_lang="fra_Latn", 
         tgt_lang="mos_Latn"
