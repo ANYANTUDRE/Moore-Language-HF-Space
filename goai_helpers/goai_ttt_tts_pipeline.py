@@ -34,7 +34,7 @@ def goai_many_tts(
 
         return sampling_rate, audio_array.numpy()
     
-    elif tts_model == "ArissBandoss/mms-tts-mos-V18":
+    elif tts_model == "ArissBandoss/mms-tts-mos-male-17-V5":
         sample_rate, audio_data = goai_tts(text)
         return sample_rate, audio_data
 

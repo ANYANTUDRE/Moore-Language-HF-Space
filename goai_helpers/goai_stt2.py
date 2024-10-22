@@ -51,7 +51,7 @@ def transcribe(
     if forced_decoder_ids:
         generate_kwargs["forced_decoder_ids"] = forced_decoder_ids
     
-    output = pipe(inputs, batch_size=batch_size, **generate_kwargs)
+    output = pipe(inputs, batch_size=batch_size, padding=True, truncation=True, **generate_kwargs)
 
     transcription_text = output['text']
 

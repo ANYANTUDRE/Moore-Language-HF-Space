@@ -32,7 +32,7 @@ def goai_tts(texte):
     start_time = time.time()
 
     # Charger le modèle TTS avec le token d'authentification
-    model_id = "ArissBandoss/mms-tts-mos-V18"
+    model_id = "ArissBandoss/mms-tts-mos-male-17-V5"
     synthesiser = pipeline("text-to-speech", model_id, device=device)
 
     # Inférence

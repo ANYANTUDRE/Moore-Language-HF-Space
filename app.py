@@ -11,7 +11,7 @@ login(token=auth_token)
 
 # list all files in the ./audios directory for the dropdown
 AUDIO_FILES = [f for f in os.listdir('./exples_voix') if os.path.isfile(os.path.join('./exples_voix', f))]
-MODELES_TTS = ["ArissBandoss/coqui-tts-moore-V1", "ArissBandoss/mms-tts-mos-V18"]
+MODELES_TTS = ["ArissBandoss/coqui-tts-moore-V1", "ArissBandoss/mms-tts-mos-male-17-V5"]
 MODELES_ASR = ["ArissBandoss/whisper-small-mos", "openai/whisper-large-v3-turbo"]
 LANGUAGES   = ["Automatic Detection"]
 
@@ -113,7 +113,7 @@ goai_ttt_tts_pipeline_if = gr.Interface(
               ["Ils achetèrent des troupeaux, firent construire des cases, parcoururent tout le pays pour offrir à leur mère et à leurs femmes les plus beaux bijoux, les plus belles étoffes.", "exple_voix_feminine.wav", None]
              ],
     cache_examples=False,
-    title="Démo des Modèles pour le Mooré: Traduction (Text-to-Text) et Synthèse Vocale (Text-to-Speech)",
+    title="Mooré TTS & Traduction",
     description=DESCRIPTION,
 )
 
@@ -137,14 +137,17 @@ goai_stt_ttt_pipeline_if = gr.Interface(
         gr.Slider(label="Chunk Length (s)", minimum=1, maximum=60, value=17.5, step=0.1),
         gr.Slider(label="Stride Length (s)", minimum=1, maximum=30, value=1, step=0.1),
     ],
-    outputs=[gr.Textbox(label="Output"), gr.File(label="Download Files")],
+    outputs=[
+        gr.Textbox(label="Texte Mooré"), 
+        gr.Textbox(label="Texte Francais"), 
+    ],
     examples=[["./audios/example1.mp3", "a ye ligdi"], 
               ["./audios/example2.mp3", "zoe nimbãanega"],
               ["./audios/example3.mp3", "zãng-zãnga"],
               ["./audios/example4.mp3", "yõk foto"]
              ],
     cache_examples=False,
-    title="Mooré ASR",
+    title="Mooré ASR & Traduction",
     description=DESCRIPTION,
     flagging_mode="auto",
 )
