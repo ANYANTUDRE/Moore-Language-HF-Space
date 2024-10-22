@@ -5,7 +5,6 @@ import os
 from languages import get_language_names
 from goai_helpers import goai_traduction, goai_stt, goai_stt2, goai_tts,  goai_tts2, goai_ttt_tts_pipeline, goai_stt_ttt_pipeline
 
-
 auth_token = os.getenv('HF_SPACE_TOKEN')
 login(token=auth_token)
 
@@ -13,6 +12,9 @@ login(token=auth_token)
 # list all files in the ./audios directory for the dropdown
 AUDIO_FILES = [f for f in os.listdir('./exples_voix') if os.path.isfile(os.path.join('./exples_voix', f))]
 MODELES_TTS = ["ArissBandoss/coqui-tts-moore-V1", "ArissBandoss/mms-tts-mos-V18"]
+MODELES_ASR = ["ArissBandoss/whisper-small-mos"]
+LANGUAGES  = ["Automatic Detection"]
+
 DESCRIPTION = """<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 250px;">
                         Ce modèle de traduction vers la <b>langue Mooré</b> a été développé from scratch par <b>GO AI CORP</b> et la version disponible en test est celle à 700 millions de paramètres.
@@ -58,7 +60,12 @@ goai_stt_if = gr.Interface(
             value="ArissBandoss/whisper-small-mos", 
             label="Model Name"
         ),
-        gr.Dropdown(choices=["Automatic Detection"] + sorted(get_language_names()), value="Automatic Detection", label="Language", interactive = True,),
+        gr.Dropdown(
+            choices=LANGUAGES, 
+            value="Automatic Detection",  # + sorted(get_language_names())
+            label="Language", 
+            interactive = True,
+        ), 
         gr.Slider(label="Batch Size", minimum=1, maximum=32, value=8, step=1),
         gr.Slider(label="Chunk Length (s)", minimum=1, maximum=60, value=17.5, step=0.1),
         gr.Slider(label="Stride Length (s)", minimum=1, maximum=30, value=1, step=0.1),
@@ -118,6 +125,17 @@ goai_stt_ttt_pipeline_if = gr.Interface(
     fn=goai_stt_ttt_pipeline.goai_stt_ttt,
     inputs=[
         gr.Audio(sources=["microphone", "upload"], type="filepath"),
+        gr.Dropdown(
+            label="Modèles d'ASR", 
+            choices=MODELES_ASR, 
+            value="Automatic Detection"
+        ),
+        gr.Dropdown(
+            choices=LANGUAGES, 
+            value="Automatic Detection",  # + sorted(get_language_names())
+            label="Language", 
+            interactive = True,
+        ), 
         gr.Slider(label="Batch Size", minimum=1, maximum=32, value=8, step=1),
         gr.Slider(label="Chunk Length (s)", minimum=1, maximum=60, value=17.5, step=0.1),
         gr.Slider(label="Stride Length (s)", minimum=1, maximum=30, value=1, step=0.1),
