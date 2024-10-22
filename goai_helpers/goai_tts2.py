@@ -1,23 +1,16 @@
 import os
-import re
 import time
 import torch
 import torchaudio
 import spaces
-import requests
 import tempfile
-import concurrent
-import numpy as np
 from tqdm import tqdm
 from typing import Optional, Tuple
 from huggingface_hub import hf_hub_download, hf_hub_url, login
 
-from TTS.tts.layers.xtts.tokenizer import VoiceBpeTokenizer
 from TTS.tts.configs.xtts_config import XttsConfig
 from TTS.tts.models.xtts import Xtts
 
-from resemble_enhance.enhancer.inference import denoise, enhance
-from flore200_codes import flores_codes
 from goai_helpers.utils import download_file, diviser_phrases_moore, enhance_speech
 from goai_helpers.goai_traduction import goai_traduction
 
@@ -284,7 +277,11 @@ def goai_ttt_tts(
 ):
 
     # translation    
-    mos_text = goai_traduction.goai_traduction(text, src_lang="fra_Latn", tgt_lang="mos_Latn")
+    mos_text = goai_traduction(
+                        text, 
+                        src_lang="fra_Latn", 
+                        tgt_lang="mos_Latn"
+                    )
     yield mos_text, None, None, None
     
     # TTS pipeline

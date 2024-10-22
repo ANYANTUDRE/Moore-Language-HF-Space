@@ -3,10 +3,10 @@ import spaces
 from transformers import pipeline, AutoModelForSeq2SeqLM, AutoTokenizer
 import os
 from huggingface_hub import login
+
 max_length = 512
 auth_token = os.getenv('HF_SPACE_TOKEN')
 login(token=auth_token)
-#auth_token = os.environ["HF_SPACE_TOKEN"]
 
 
 @spaces.GPU

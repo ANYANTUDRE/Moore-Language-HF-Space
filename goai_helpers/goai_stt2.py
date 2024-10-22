@@ -6,7 +6,15 @@ DEVICE = 0 if torch.cuda.is_available() else "cpu"
 
 
 @spaces.GPU
-def transcribe(inputs, model, language, batch_size, chunk_length_s, stride_length_s):
+def transcribe(
+        inputs, 
+        model, 
+        language, 
+        batch_size, 
+        chunk_length_s, 
+        stride_length_s
+    ):
+    
     if inputs is None:
         raise gr.Error("No audio file submitted! Please upload or record an audio file before submitting your request.")
     
