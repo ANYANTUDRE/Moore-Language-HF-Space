@@ -6,9 +6,11 @@ import numpy as np
 from transformers import pipeline, set_seed
 from huggingface_hub import login
 
-#auth_token = os.environ["HF_SPACE_TOKEN"]
+
 auth_token = os.getenv('HF_SPACE_TOKEN')
 login(token=auth_token)
+
+
 @spaces.GPU
 def goai_tts(texte):
     """
