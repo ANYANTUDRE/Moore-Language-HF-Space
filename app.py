@@ -2,7 +2,7 @@ import gradio as gr
 from huggingface_hub import login
 
 import os
-from languages import get_language_names
+#from languages import get_language_names
 from goai_helpers import goai_traduction, goai_stt, goai_stt2, goai_tts,  goai_tts2, goai_ttt_tts_pipeline, goai_stt_ttt_pipeline
 
 auth_token = os.getenv('HF_SPACE_TOKEN')
@@ -12,8 +12,8 @@ login(token=auth_token)
 # list all files in the ./audios directory for the dropdown
 AUDIO_FILES = [f for f in os.listdir('./exples_voix') if os.path.isfile(os.path.join('./exples_voix', f))]
 MODELES_TTS = ["ArissBandoss/coqui-tts-moore-V1", "ArissBandoss/mms-tts-mos-V18"]
-MODELES_ASR = ["ArissBandoss/whisper-small-mos"]
-LANGUAGES  = ["Automatic Detection"]
+MODELES_ASR = ["ArissBandoss/whisper-small-mos", "openai/whisper-large-v3-turbo"]
+LANGUAGES   = ["Automatic Detection"]
 
 DESCRIPTION = """<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                     <div style="flex: 1; min-width: 250px;">
@@ -25,7 +25,7 @@ DESCRIPTION = """<div style="display: flex; justify-content: space-between; alig
                         <img src="https://github.com/ANYANTUDRE/Stage-IA-Selever-GO-AI-Corp/blob/main/img/goaicorp-logo2.jpg?raw=true" width="300px" style="max-width: 100%; height: auto;">
                     </div>
                 </div>
-                """
+            """
 
 
 demo = gr.Blocks(theme=gr.themes.Soft())
@@ -53,10 +53,7 @@ goai_stt_if = gr.Interface(
     inputs=[
         gr.Audio(sources=["microphone", "upload"], type="filepath"),
         gr.Dropdown(
-            choices=[
-                "ArissBandoss/whisper-small-mos",
-                "openai/whisper-large-v3-turbo", 
-            ],
+            choices=MODELES_ASR,
             value="ArissBandoss/whisper-small-mos", 
             label="Model Name"
         ),
@@ -128,7 +125,7 @@ goai_stt_ttt_pipeline_if = gr.Interface(
         gr.Dropdown(
             label="Modèles d'ASR", 
             choices=MODELES_ASR, 
-            value="Automatic Detection"
+            value="ArissBandoss/whisper-small-mos",
         ),
         gr.Dropdown(
             choices=LANGUAGES, 

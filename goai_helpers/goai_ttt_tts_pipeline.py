@@ -1,5 +1,4 @@
 import os
-import torch
 import spaces
 from huggingface_hub import login
 
@@ -33,11 +32,11 @@ def goai_many_tts(
         else:
             audio_array, sampling_rate = text_to_speech(tts, text, reference_speaker=reference_speaker)
 
-        return text, (sampling_rate, audio_array.numpy())
+        return sampling_rate, audio_array.numpy()
     
     elif tts_model == "ArissBandoss/mms-tts-mos-V18":
         sample_rate, audio_data = goai_tts(text)
-        return text, (sample_rate, audio_data)
+        return sample_rate, audio_data
 
     else:
         print("Erreur de modèle!!! Veuillez vérifier le modèle sélectionné.")

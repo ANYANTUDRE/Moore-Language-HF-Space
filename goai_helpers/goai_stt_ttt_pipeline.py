@@ -9,29 +9,26 @@ from goai_helpers.goai_stt2 import transcribe
 auth_token = os.getenv('HF_SPACE_TOKEN')
 login(token=auth_token)
 
-MODEL_ASR = "ArissBandoss/whisper-small-mos"
-LANGUAGE  = "Automatic Detection"
-
 
 # gradio interface translation and text to speech function
 @spaces.GPU(duration=120)
 def goai_stt_ttt(
-        inputs,  
+        inputs, 
+        model, 
+        language, 
         batch_size, 
         chunk_length_s, 
-        stride_length_s,
-        model=MODEL_ASR, 
-        language=LANGUAGE,
+        stride_length_s
     ):
 
     # 1. STT: Speech To Text
     mos_text = transcribe(
-        inputs,  
+        inputs, 
+        model, 
+        language, 
         batch_size, 
         chunk_length_s, 
-        stride_length_s,
-        model=model, 
-        language=language,
+        stride_length_s
     )
     yield mos_text, None
 
