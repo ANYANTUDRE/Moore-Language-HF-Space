@@ -26,10 +26,12 @@ def goai_traduction(text, src_lang, tgt_lang):
     model     = AutoModelForSeq2SeqLM.from_pretrained(model_id, token=auth_token)
         
     trans_pipe = pipeline("translation", 
-                          model=model, tokenizer=tokenizer, 
-                          src_lang=src_lang, tgt_lang=tgt_lang, 
+                          model=model, 
+                          tokenizer=tokenizer, 
+                          src_lang=src_lang, 
+                          tgt_lang=tgt_lang, 
                           max_length=max_length,
                           device=device
-                         )
+                )
     
     return trans_pipe(text)[0]["translation_text"]
