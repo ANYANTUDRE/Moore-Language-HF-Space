@@ -7,4 +7,5 @@ gradio~=4.8.0
 deepspeed~=0.12.1
 requests~=2.31.0
 resemble-enhance==0.0.2.dev240104122303
+mutagen
 git+https://github.com/ANYANTUDRE/coqui-TTS.git
