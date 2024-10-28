@@ -73,7 +73,7 @@ class MooreTTS:
         # charger le point de contrôle du modèle dans le modèle initialisé
         self.model.load_checkpoint(
             self.config,
-            checkpoint_path=self.local_dir+ "/best_model_28574.pth" ,
+            checkpoint_path=self.local_dir+ "/model_compressed.pth" ,
             vocab_path=self.paths['vocab.json'],
             use_deepspeed=False 
         )
@@ -134,7 +134,7 @@ class MooreTTS:
         Returns :
             Un dictionnaire avec des clés comme noms des composants et des valeurs comme chemins des fichiers.
         """
-        components = ['best_model_28574.pth', 'config.json', 'vocab.json', 'dvae.pth', 'mel_stats.pth']
+        components = ['model_compressed.pth', 'config.json', 'vocab.json', 'dvae.pth', 'mel_stats.pth']
         return {name: os.path.join(local_dir, name) for name in components}
 
     def text_to_speech(
