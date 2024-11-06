@@ -12,9 +12,7 @@ login(token=auth_token)
 # list all files in the ./audios directory for the dropdown
 AUDIO_FILES = [f for f in os.listdir('./exples_voix') if os.path.isfile(os.path.join('./exples_voix', f))]
 MODELES_TTS = ["ArissBandoss/coqui-tts-moore-V1", "ArissBandoss/mms-tts-mos-V2"]
-MODELES_ASR = ["ArissBandoss/whisper-small-mos", 
-               #"openai/whisper-large-v3-turbo"
-               ]
+MODELES_ASR = ["ArissBandoss/whisper-small-mos", "ArissBandoss/whisper-large-v3-turbo-mos"]
 LANGUAGES   = ["Automatic Detection"]
 
 DESCRIPTION_TTT = """<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
